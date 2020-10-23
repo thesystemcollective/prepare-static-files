@@ -9,23 +9,19 @@ import { isLossLess } from './lib.mjs'
 
 // ffmpeg -i input.mp3 -c:a aac -b:a 192k output.m4a
 
-const convertFile = ({ file, codec, ext }) => new Promise(async res => {
-  const origExt = path.extname(file)
-  const name = file.replace(origExt, ext)
+const convertFile = ({ file, codec, ext }) =>
+  new Promise(async res => {
+    const origExt = path.extname(file)
+    const name = file.replace(origExt, ext)
 
-  const exists = await fs.exists(name)
-  if (exists) {
-    res()
-    return
-  }
+    const exists = await fs.exists(name)
+    if (exists) {
+      res()
+      return
+    }
 
-  ffmpeg(file)
-    .addOutput(name)
-    .audioBitrate(128)
-    .audioCodec(codec)
-    .on('end', res)
-    .run()
-})
+    ffmpeg(file).addOutput(name).audioBitrate(128).audioCodec(codec).on('end', res).run()
+  })
 
 export const audio = async ({ files, silent }) =>
   await Promise.all(
@@ -45,5 +41,5 @@ export const audio = async ({ files, silent }) =>
           log.info('wrote converted audio files for:', file)
         }
       }
-    })
+    }),
   )

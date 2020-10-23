@@ -16,7 +16,7 @@ const cliArgs = {
     ['--no-compress', '--no-zip'],
     ['--dirs', '--dir', '-d'],
     ['--silent', '--quiet', '-q'],
-    ['--no-webp']
+    ['--no-webp'],
   ],
   single: ['--no-optimize-images', '--no-compress', '--no-webp'],
   default: {
@@ -77,9 +77,7 @@ const run = async () => {
     tasks.push(optimize)
   }
 
-  await Promise.all(tasks.map(async task => {
-    task({ files, silent, noWebp })
-  }))
+  await Promise.all(tasks.map(async task => await task({ files, silent, noWebp })))
 
   log.success('done')
 }

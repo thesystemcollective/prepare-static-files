@@ -2,6 +2,9 @@
   "name": "prepare-static-files",
   "version": "0.0.1",
   "description": "optimize and compress static files for hosting.",
+  "bin": {
+    "prepare-static-files": "src/bin.mjs"
+  },
   "scripts": {
     "dev": "grundstein-server --dir ./docs --port 8002 --cors '*'",
     "optimize": "src/bin.mjs --dir docs --no-compress",

@@ -10,7 +10,8 @@
     "optimize": "src/bin.mjs --dir docs --no-compress",
     "compress": "src/bin.mjs --dir docs --no-optimize-images",
     "all": "src/bin.mjs --dir docs",
-    "format": "f -w"
+    "format": "f -w",
+    "cleanup": "rm docs/*.webp docs/*.gz"
   },
   "private": true,
   "repository": {

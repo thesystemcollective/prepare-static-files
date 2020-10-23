@@ -2,6 +2,11 @@
 
 this is a cli tool that prepares directories of static files for hosting.
 
+### converts:
+* jpg and png to webp
+* non audio, non image and non video files get gzipped
+* flac to m4a, mp3 and ogg.
+
 #### install
 
 ```bash

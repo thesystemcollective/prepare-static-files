@@ -23,7 +23,9 @@ export const optimize = async ({ files, silent, noWebp }) => {
           if (!silent) {
             log.info('generate webp', webpName)
           }
-          sharpen.toFile(webpName)
+
+          const sharpen = sharp(file)
+          await sharpen.toFile(webpName)
         }
       }
 

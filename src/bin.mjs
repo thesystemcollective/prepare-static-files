@@ -1,24 +1,18 @@
 #!/usr/bin/env node
 
 import cli from '@magic/cli'
-import log from '@magic/log'
-import fs from '@magic/fs'
-import is from '@magic/types'
-import deep from '@magic/deep'
-
-import { optimize } from '../src/optimize.mjs'
-import { compress } from '../src/compress.mjs'
+import { run } from './index.mjs'
 
 const cliArgs = {
   options: [
-    ['--help', '-help', 'help', '--h', '-h'],
+    ['--dirs', '--dir', '-d'],
     ['--no-optimize-images', '--no-opt'],
     ['--no-compress', '--no-zip'],
-    ['--dirs', '--dir', '-d'],
+    '--no-audio',
     ['--silent', '--quiet', '-q'],
-    ['--no-webp'],
+    '--no-webp',
   ],
-  single: ['--no-optimize-images', '--no-compress', '--no-webp'],
+  single: ['--no-optimize-images', '--no-compress', '--no-webp', '--no-audio'],
   default: {
     '--dirs': ['docs'],
   },
@@ -30,6 +24,7 @@ const cliArgs = {
       '--no-optimize-images': 'do not sharp optimize images',
       '--no-compress': 'do not compress files',
       '--no-webp': 'do not generate webp files',
+      '--no-audio': 'do not generate aac and ogg files from mp3s',
       '--silent': 'do not output info logs',
     },
     example: `
@@ -44,42 +39,15 @@ prepare-static-files --no-opt
 prepare-static-files --no-compress
 prepare-static-files --no-zip
 
+# do not create audio files from mp3s
+prepare-static-files --no-audio
+
 # show this help text
 prepare-static-files --help
 `,
   },
 }
 
-const run = async () => {
-  const { args } = cli(cliArgs)
+const { args } = cli(cliArgs)
 
-  const { dirs, noCompress, noOptimizeImages, noWebp, silent } = args
-
-  const tasks = []
-
-  log.info('prepare-static-files started')
-
-  const deepFiles = await Promise.all(dirs.map(async dir => await fs.getFiles(dir)))
-
-  const files = deep.flatten(deepFiles)
-
-  if (!files.length) {
-    log.error('Found no files to edit. Exiting.')
-    return
-  }
-
-  // '' is set if --no-compress is passed, otherwise noCompress
-  if (is.undefined(noCompress)) {
-    tasks.push(compress)
-  }
-
-  if (is.undefined(noOptimizeImages)) {
-    tasks.push(optimize)
-  }
-
-  await Promise.all(tasks.map(async task => await task({ files, silent, noWebp })))
-
-  log.success('done')
-}
-
-run()
+run(args)

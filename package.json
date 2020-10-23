@@ -11,7 +11,7 @@
     "compress": "src/bin.mjs --dir docs --no-optimize-images",
     "all": "src/bin.mjs --dir docs",
     "format": "f -w",
-    "cleanup": "rm docs/*.webp docs/*.gz docs/*.ogg docs/*.m4a"
+    "cleanup": "rm -f docs/*.webp docs/*.gz docs/*.ogg docs/*.m4a docs/*.mp3"
   },
   "private": true,
   "repository": {

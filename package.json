@@ -9,7 +9,8 @@
     "dev": "grundstein-server --dir ./docs --port 8002 --cors '*'",
     "optimize": "src/bin.mjs --dir docs --no-compress",
     "compress": "src/bin.mjs --dir docs --no-optimize-images",
-    "all": "src/bin.mjs --dir docs"
+    "all": "src/bin.mjs --dir docs",
+    "format": "f -w"
   },
   "private": true,
   "repository": {
@@ -31,7 +32,8 @@
     "sharp": "0.26.2"
   },
   "devDependencies": {
-    "@grundstein/gss": "github:grundstein/gss"
+    "@grundstein/gss": "github:grundstein/gss",
+    "@magic/format": "0.0.17"
   },
   "contributors": [
     {

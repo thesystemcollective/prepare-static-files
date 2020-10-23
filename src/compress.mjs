@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import log from '@magic/log'
 import fs from '@magic/fs'
 

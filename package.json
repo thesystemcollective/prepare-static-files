@@ -1,0 +1,43 @@
+{
+  "name": "prepare-static-files",
+  "version": "0.0.1",
+  "description": "optimize and compress static files for hosting.",
+  "scripts": {
+    "dev": "grundstein-server --dir ./docs --port 8002 --cors '*'",
+    "optimize": "src/bin.mjs --dir docs --no-compress",
+    "compress": "src/bin.mjs --dir docs --no-optimize-images",
+    "all": "src/bin.mjs --dir docs"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesystemcollective/prepare-static-files.git"
+  },
+  "author": "THESYSTEM",
+  "license": "APGL-3.0",
+  "bugs": {
+    "url": "https://github.com/thesystemcollective/prepare-static-files/issues"
+  },
+  "homepage": "https://github.com/thesystemcollective/prepare-static-files#readme",
+  "dependencies": {
+    "@magic/cli": "0.0.29",
+    "@magic/fs": "0.0.8",
+    "@magic/log": "0.1.7",
+    "@magic/types": "0.1.13",
+    "node-zopfli-es": "1.0.7",
+    "sharp": "0.26.2"
+  },
+  "devDependencies": {
+    "@grundstein/gss": "github:grundstein/gss"
+  },
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "github": "jaeh"
+    },
+    {
+      "name": "daniela weiss",
+      "github": "mslitto"
+    }
+  ]
+}

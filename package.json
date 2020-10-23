@@ -29,6 +29,7 @@
     "@magic/fs": "0.0.8",
     "@magic/log": "0.1.7",
     "@magic/types": "0.1.13",
+    "fluent-ffmpeg": "2.1.2",
     "node-zopfli-es": "1.0.7",
     "sharp": "0.26.2"
   },

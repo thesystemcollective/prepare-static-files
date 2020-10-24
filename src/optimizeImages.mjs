@@ -48,7 +48,8 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
 
         const buffer = await data.toBuffer()
 
-        if (!buffer || buffer.length >= originalBuffer.length) {
+        // make sure we do not write a file bigger than before 
+        if (buffer.length >= originalBuffer.length) {
           return
         }
 

@@ -8,7 +8,7 @@ import sharp from 'sharp'
 
 import { isImage } from './lib.mjs'
 
-export const optimize = async ({ files, silent, noWebp }) => {
+export const optimizeImages = async ({ files, silent, noWebp }) => {
   await Promise.all(
     files.map(async file => {
       if (isImage(file)) {

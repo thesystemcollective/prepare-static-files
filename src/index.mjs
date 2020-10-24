@@ -3,7 +3,7 @@ import fs from '@magic/fs'
 import is from '@magic/types'
 import deep from '@magic/deep'
 
-import { optimize } from '../src/optimize.mjs'
+import { optimizeImages } from '../src/optimizeImages.mjs'
 import { compress } from '../src/compress.mjs'
 import { audio } from './audio.mjs'
 
@@ -29,7 +29,7 @@ export const run = async args => {
   }
 
   if (is.undefined(noOptimizeImages)) {
-    tasks.push(optimize)
+    tasks.push(optimizeImages)
   }
 
   if (is.undefined(noAudio)) {

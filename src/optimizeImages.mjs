@@ -14,6 +14,8 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
       if (isImage(file)) {
         const sharpen = sharp(file)
 
+        const originalBuffer = await sharpen.toBuffer()
+
         if (is.undefined(noWebp)) {
           const extension = path.extname(file)
           const webpName = file.replace(extension, '.webp')
@@ -28,6 +30,8 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
           }
         }
 
+        let buffer
+
         if (file.endsWith('jpg')) {
           const data = await sharpen.jpeg({
             trellisQuanttisation: true,
@@ -35,29 +39,23 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
             optimizeCoding: true,
           })
 
-          const buffer = await data.toBuffer()
-          const originalBuffer = await sharpen.toBuffer()
+          buffer = await data.toBuffer()
 
-          if (buffer.length >= originalBuffer.length) {
-            return
-          }
-
-          if (!silent) {
-            log.info('overwrite', file)
-          }
-
-          await fs.writeFile(file, buffer)
         } else if (file.endsWith('png')) {
           const data = await sharpen.png()
 
-          const buffer = await data.toBuffer()
-
-          if (!silent) {
-            log.info('overwrite', file)
-          }
-
-          await fs.writeFile(file, buffer)
+          buffer = await data.toBuffer()
         }
+
+        if (!buffer || buffer.length >= originalBuffer.length) {
+          return
+        }
+
+        if (!silent) {
+          log.info('overwrite', file)
+        }
+
+        await fs.writeFile(file, buffer)
       }
     }),
   )

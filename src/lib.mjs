@@ -1,13 +1,21 @@
-export const isImage = file =>
-  file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.webp') || file.endsWith('.ico')
+import { compressibles } from '@magic/mime-types'
 
-export const isVideo = file => file.endsWith('.mp4') || file.endsWith('.webm')
-export const isAudio = file =>
-  file.endsWith('.mp3') || file.endsWith('.m4a') || file.endsWith('.ogg')
-export const isLossLess = file =>
-  file.endsWith('.flac') || file.endsWith('.wav') || file.endsWith('.alac')
+exportconst getExtension = file => {
+  const fileNameArray = file.split('.')
+  const ext = fileNameArray[fileNameArray.length - 1]
+
+  return ext
+}
+
+export const isImage = file => ['.png', '.jpg', '.jpeg', '.webp'].some(ext => file.endsWith(ext))
+
+export const isVideo = file => ['.mp4', '.webm'].some(t => file.endsWith(t))
+
+export const isAudio = file => ['.mp3', '.m4a', 'ogg'].some(t => file.endsWith(t))
+
+export const isLossLess = file => ['.flac', '.wav', '.alac'].some(t => file.endsWith(t))
 
 export const isZip = file => file.endsWith('.gz')
 
-export const isCompressible = file =>
-  !isImage(file) && !isVideo(file) && !isAudio(file) && !isLossLess(file) && !isZip(file)
+export const isCompressible = file => compressibles[getExtension(file)]
+

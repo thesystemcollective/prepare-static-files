@@ -8,6 +8,12 @@ import sharp from 'sharp'
 
 import { isImage } from './lib.mjs'
 
+const jpegOptions = {
+  trellisQuanttisation: true,
+  quality: 80,
+  optimizeCoding: true,
+}
+
 export const optimizeImages = async ({ files, silent, noWebp }) => {
   await Promise.all(
     files.map(async file => {
@@ -30,22 +36,17 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
           }
         }
 
-        let buffer
+        let data
 
         if (file.endsWith('jpg')) {
-          const data = await sharpen.jpeg({
-            trellisQuanttisation: true,
-            quality: 80,
-            optimizeCoding: true,
-          })
-
-          buffer = await data.toBuffer()
-
+          data = await sharpen.jpeg(jpegOptions)
         } else if (file.endsWith('png')) {
-          const data = await sharpen.png()
-
-          buffer = await data.toBuffer()
+          data = await sharpen.png()
+        } else {
+          return
         }
+
+        const buffer = await data.toBuffer()
 
         if (!buffer || buffer.length >= originalBuffer.length) {
           return

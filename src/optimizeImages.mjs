@@ -36,6 +36,11 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
           })
 
           const buffer = await data.toBuffer()
+          const originalBuffer = await sharpen.toBuffer()
+
+          if (buffer.length >= originalBuffer.length) {
+            return
+          }
 
           if (!silent) {
             log.info('overwrite', file)

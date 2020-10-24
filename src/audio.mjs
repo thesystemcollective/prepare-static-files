@@ -20,7 +20,7 @@ const convertFile = ({ file, codec, ext }) =>
       return
     }
 
-    ffmpeg(file).addOutput(name).audioBitrate(128).audioCodec(codec).on('end', res).run()
+    ffmpeg(file).addOutput(name).audioBitrate(192).audioCodec(codec).on('end', res).run()
   })
 
 export const audio = async ({ files, silent }) =>

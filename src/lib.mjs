@@ -1,6 +1,6 @@
 import { compressibles } from '@magic/mime-types'
 
-exportconst getExtension = file => {
+export const getExtension = file => {
   const fileNameArray = file.split('.')
   const ext = fileNameArray[fileNameArray.length - 1]
 
@@ -18,4 +18,3 @@ export const isLossLess = file => ['.flac', '.wav', '.alac'].some(t => file.ends
 export const isZip = file => file.endsWith('.gz')
 
 export const isCompressible = file => compressibles[getExtension(file)]
-

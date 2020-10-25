@@ -30,6 +30,14 @@ export const compress = async ({ file, silent }) => {
   } else {
     if (!silent) {
       log.warn('ZIP', 'less than 20% smaller', file)
+
+      try {
+        const stat = await fs.stat(outputName)
+        const difference = input.length - stat.size
+        if (difference < twentyPercent) {
+          await fs.rmrf(outputName)
+        }
+      } catch (e) { }
     }
   }
 }

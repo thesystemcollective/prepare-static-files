@@ -16,9 +16,14 @@ const convertFile = ({ file, codec, ext }) =>
       await fs.stat(name)
       res(false)
       return
-    } catch (e) { }
+    } catch (e) {}
 
-    ffmpeg(file).addOutput(name).audioBitrate(192).audioCodec(codec).on('end', () => res(true)).run()
+    ffmpeg(file)
+      .addOutput(name)
+      .audioBitrate(192)
+      .audioCodec(codec)
+      .on('end', () => res(true))
+      .run()
   })
 
 export const audio = async ({ file, silent }) => {

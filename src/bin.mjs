@@ -13,10 +13,16 @@ const cliArgs = {
     '--no-webp',
     ['--compress-min-percent', '--min-percent'],
   ],
-  single: ['--no-optimize-images', '--no-compress', '--no-webp', '--no-audio', '--compress-min-percent'],
+  single: [
+    '--no-optimize-images',
+    '--no-compress',
+    '--no-webp',
+    '--no-audio',
+    '--compress-min-percent',
+  ],
   default: {
     '--dirs': ['docs'],
-    '--compress-min-percent': 20,
+    '--compress-min-percent': 0.2,
   },
   help: {
     name: 'thesystem - prepare-static-files',
@@ -28,7 +34,8 @@ const cliArgs = {
       '--no-webp': 'do not generate webp files',
       '--no-audio': 'do not generate aac and ogg files from mp3s',
       '--silent': 'do not output info logs',
-      '--compress-min-percent': 'which size reduction percentage is needed for compressed files to be saved.',
+      '--compress-min-percent':
+        'which size reduction percentage is needed for compressed files to be saved.',
     },
     example: `
 # optimize and compress files

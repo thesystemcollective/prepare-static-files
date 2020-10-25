@@ -43,7 +43,7 @@ export const optimizeImage = async ({ file, silent, noWebp }) => {
 
   const buffer = await data.toBuffer()
 
-  // make sure we do not write a file bigger than before 
+  // make sure we do not write a file bigger than before
   if (buffer.length >= originalBuffer.length) {
     return
   }
@@ -54,4 +54,3 @@ export const optimizeImage = async ({ file, silent, noWebp }) => {
     log.info(file, 'oldSize:', originalBuffer.length, 'newSize:', buffer.length)
   }
 }
-

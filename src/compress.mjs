@@ -3,7 +3,7 @@ import fs from '@magic/fs'
 
 import zopfli from 'node-zopfli-es'
 
-export const compress = async ({ file, silent }) => {
+export const compress = async ({ file, silent, compressMinPercent = 0.2 }) => {
   const outputName = `${file}.gz`
 
   const input = await fs.readFile(file)
@@ -18,10 +18,13 @@ export const compress = async ({ file, silent }) => {
   }
 
   const zipped = await zopfli.gzip(input, options)
-  const twentyPercent = input.length * 0.2
+
+  const compressPercent = compressMinPercent < 1 ? compressMinPercent : 100 / compressMinPercent
+  const requiredSizeReduction = input.length * compressPercent
+
   const difference = input.length - zipped.length
 
-  if (difference > twentyPercent) {
+  if (difference > requiredSizeReduction) {
     await fs.writeFile(outputName, zipped)
 
     if (!silent) {
@@ -34,7 +37,7 @@ export const compress = async ({ file, silent }) => {
       try {
         const stat = await fs.stat(outputName)
         const difference = input.length - stat.size
-        if (difference < twentyPercent) {
+        if (difference < requiredSizeReduction) {
           await fs.rmrf(outputName)
         }
       } catch (e) { }

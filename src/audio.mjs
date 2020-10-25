@@ -22,10 +22,6 @@ const convertFile = ({ file, codec, ext }) =>
   })
 
 export const audio = async ({ file, silent }) => {
-  if (!silent) {
-    log.info('start converting audio:', file)
-  }
-
   await Promise.all([
     convertFile({ file, codec: 'aac', ext: '.m4a' }),
     convertFile({ file, codec: 'libvorbis', ext: '.ogg' }),

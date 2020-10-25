@@ -54,7 +54,7 @@ export const optimizeImages = async ({ files, silent, noWebp }) => {
         }
 
         if (!silent) {
-          log.info('overwrite', file)
+          log.info(file, 'oldSize:', originalBuffer.length, 'newSize:', buffer.length)
         }
 
         await fs.writeFile(file, buffer)

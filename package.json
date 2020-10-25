@@ -1,5 +1,5 @@
 {
-  "name": "@thesystemcollective/prepare-static-files",
+  "name": "@grundstein/prepare-static-files",
   "version": "0.0.1",
   "description": "optimize and compress static files for hosting.",
   "bin": {
@@ -18,14 +18,14 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thesystemcollective/prepare-static-files.git"
+    "url": "git+https://github.com/grundstein/prepare-static-files.git"
   },
   "author": "TheSystemCollective",
   "license": "APGL-3.0",
   "bugs": {
-    "url": "https://github.com/thesystemcollective/prepare-static-files/issues"
+    "url": "https://github.com/grundstein/prepare-static-files/issues"
   },
-  "homepage": "https://github.com/thesystemcollective/prepare-static-files#readme",
+  "homepage": "https://github.com/grundstein/prepare-static-files#readme",
   "dependencies": {
     "@magic/cli": "0.0.29",
     "@magic/fs": "0.0.8",

@@ -6,11 +6,6 @@ import zopfli from 'node-zopfli-es'
 export const compress = async ({ file, silent }) => {
   const outputName = `${file}.gz`
 
-  const exists = await fs.exists(outputName)
-  if (exists) {
-    return
-  }
-
   const input = await fs.readFile(file)
 
   const options = {

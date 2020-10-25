@@ -24,12 +24,14 @@ export const compress = async ({ file, silent }) => {
 
   const zipped = await zopfli.gzip(input, options)
   if (zipped.length < input.length) {
-    if (!silent) {
-      log.info('Write compressed file:', outputName)
-    }
-
     await fs.writeFile(outputName, zipped)
+
+    if (!silent) {
+      log.info('Wrote compressed file:', outputName)
+    }
   } else {
-    log.warn('ZIP', 'zipped file is bigger than original, did not save compressed file', file)
+    if (!silent) {
+      log.warn('ZIP', 'zipped file is bigger than original, did not save compressed file', file)
+    }
   }
 }

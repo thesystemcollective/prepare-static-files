@@ -13,10 +13,6 @@ const jpegOptions = {
 }
 
 export const optimizeImage = async ({ file, silent, noWebp }) => {
-  if (!silent) {
-    log.info('start image', file)
-  }
-
   const sharpen = await sharp(file)
 
   const originalBuffer = await sharpen.toBuffer()
@@ -52,14 +48,10 @@ export const optimizeImage = async ({ file, silent, noWebp }) => {
     return
   }
 
-  if (!silent) {
-    log.info(file, 'oldSize:', originalBuffer.length, 'newSize:', buffer.length)
-  }
-
   await fs.writeFile(file, buffer)
 
   if (!silent) {
-    log.success('optimized image', file)
+    log.info(file, 'oldSize:', originalBuffer.length, 'newSize:', buffer.length)
   }
 }
 

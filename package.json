@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/thesystemcollective/prepare-static-files.git"
   },
-  "author": "THESYSTEM",
+  "author": "TheSystemCollective",
   "license": "APGL-3.0",
   "bugs": {
     "url": "https://github.com/thesystemcollective/prepare-static-files/issues"
@@ -30,7 +30,6 @@
     "@magic/fs": "0.0.8",
     "@magic/log": "0.1.7",
     "@magic/mime-types": "0.0.5",
-    "@magic/test": "0.1.56",
     "@magic/types": "0.1.13",
     "fluent-ffmpeg": "2.1.2",
     "node-zopfli-es": "1.0.7",
@@ -38,7 +37,8 @@
   },
   "devDependencies": {
     "@grundstein/gss": "github:grundstein/gss",
-    "@magic/format": "0.0.17"
+    "@magic/format": "0.0.17",
+    "@magic/test": "0.1.56"
   },
   "contributors": [
     {

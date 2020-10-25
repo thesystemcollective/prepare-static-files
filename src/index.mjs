@@ -9,7 +9,7 @@ import { compress } from '../src/compress.mjs'
 import { audio } from './audio.mjs'
 
 const handleFiles = args => {
-  const { noOptimizeImages, noAudio, noCompress, silent } = args
+  const { noOptimizeImages, noAudio, noCompress } = args
 
   return async file => {
     try {

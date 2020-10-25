@@ -23,7 +23,10 @@ export const compress = async ({ file, silent }) => {
   }
 
   const zipped = await zopfli.gzip(input, options)
-  if (zipped.length < input.length) {
+  const twentyPercent = input.length * 0.2
+  const difference = input.length - zipped.length
+
+  if (difference > twentyPercent) {
     await fs.writeFile(outputName, zipped)
 
     if (!silent) {
@@ -31,7 +34,7 @@ export const compress = async ({ file, silent }) => {
     }
   } else {
     if (!silent) {
-      log.warn('ZIP', 'zipped file is bigger than original, did not save compressed file', file)
+      log.warn('ZIP', 'less than 20% smaller, did not save compressed file', file)
     }
   }
 }

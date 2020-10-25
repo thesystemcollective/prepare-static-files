@@ -19,7 +19,7 @@ export const compress = async ({ file, silent, compressMinPercent = 0.2 }) => {
 
   const zipped = await zopfli.gzip(input, options)
 
-  const compressPercent = compressMinPercent < 1 ? compressMinPercent : 100 / compressMinPercent
+  const compressPercent = compressMinPercent <= 1 ? compressMinPercent : compressMinPercent / 100
   const requiredSizeReduction = input.length * compressPercent
 
   const difference = input.length - zipped.length
@@ -40,7 +40,7 @@ export const compress = async ({ file, silent, compressMinPercent = 0.2 }) => {
         if (difference < requiredSizeReduction) {
           await fs.rmrf(outputName)
         }
-      } catch (e) { }
+      } catch (e) {}
     }
   }
 }

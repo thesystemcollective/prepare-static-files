@@ -34,7 +34,7 @@ export const compress = async ({ file, silent }) => {
     }
   } else {
     if (!silent) {
-      log.warn('ZIP', 'less than 20% smaller, did not save compressed file', file)
+      log.warn('ZIP', 'less than 20% smaller', file)
     }
   }
 }

@@ -9,7 +9,7 @@ import { compress } from '../src/compress.mjs'
 import { audio } from './audio.mjs'
 
 const handleFiles = args => {
-  const { noOptimizeImages, noAudio, noCompress } = args
+  const { noOptimizeImages, noAudio, noCompress, silent } = args
 
   return async file => {
     try {
@@ -31,7 +31,9 @@ const handleFiles = args => {
           await compress({ ...args, file })
         }
 
-        log.success('finished processing', file)
+        if (!silent) {
+          log.success('finished processing', file)
+        }
       }
     } catch (e) {
       log.error(e, 'error processing file', file)

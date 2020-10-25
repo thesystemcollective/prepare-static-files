@@ -30,10 +30,6 @@ const handleFiles = args => {
         if (is.undefined(noCompress) && isCompressible(file)) {
           await compress({ ...args, file })
         }
-
-        if (!silent) {
-          log.success('finished processing', file)
-        }
       }
     } catch (e) {
       log.error(e, 'error processing file', file)

@@ -15,6 +15,8 @@ export const isAudio = file => ['.mp3', '.m4a', 'ogg'].some(t => file.endsWith(t
 
 export const isLossLess = file => ['.flac', '.wav', '.alac'].some(t => file.endsWith(t))
 
+export const isVideoSource = file => ['.mov'].some(t => file.endsWith(t))
+
 export const isZip = file => file.endsWith('.gz')
 
 export const isCompressible = file => compressibles[getExtension(file)]

@@ -45,10 +45,10 @@ const handleFiles = args => {
 export const handleEntryPoints = args => async dir => {
   const fileHandler = handleFiles(args)
 
-  const files = await fs.getFiles(dir, false)
+  const files = await fs.getFiles(dir, 1)
   await Promise.all(files.map(fileHandler))
 
-  const dirs = await fs.getDirectories(dir, false)
+  const dirs = await fs.getDirectories(dir, 1)
 
   const cleanedDirs = dirs.filter(d => d !== dir)
   await Promise.all(cleanedDirs.map(fileHandler))

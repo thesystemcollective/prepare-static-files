@@ -2,14 +2,15 @@ import log from '@magic/log'
 import fs from '@magic/fs'
 import is from '@magic/types'
 
-import { isImage, isLossLess, isCompressible } from './lib.mjs'
+import { isImage, isLossLess, isVideoSource, isCompressible } from './lib.mjs'
 
 import { optimizeImage } from '../src/optimizeImage.mjs'
 import { compress } from '../src/compress.mjs'
 import { audio } from './audio.mjs'
+import { video } from './video.mjs'
 
 const handleFiles = args => {
-  const { noOptimizeImages, noAudio, noCompress } = args
+  const { noOptimizeImages, noAudio, noCompress, noVideo } = args
 
   return async file => {
     try {
@@ -24,6 +25,10 @@ const handleFiles = args => {
 
         if (is.undefined(noAudio) && isLossLess(file)) {
           await audio({ ...args, file })
+        }
+
+        if (is.undefined(noVideo) && isVideoSource(file)) {
+          await video({ ...args, file })
         }
 
         // '' is set if --no-compress is passed, otherwise noCompress

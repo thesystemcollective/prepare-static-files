@@ -7,7 +7,7 @@ import ffmpeg from 'fluent-ffmpeg'
 
 // ffmpeg -i trailer.mov -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis trailer.webm
 
-//for f in *.mp4; do 
+//for f in *.mp4; do
 //  ffmpeg -i "$f" -map 0 -c copy -c:v libx264 -crf 23 -preset medium h264vids/"${f%.*}.mkv";
 // done
 
@@ -22,7 +22,7 @@ const convertFile = ({ file, codec, ext }) =>
       await fs.stat(name)
       res(false)
       return
-    } catch (e) { }
+    } catch (e) {}
 
     ffmpeg(file)
       .addOutput(name)

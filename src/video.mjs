@@ -16,18 +16,17 @@ import ffmpeg from 'fluent-ffmpeg'
 const convertFile = ({ file, codec, ext }) =>
   new Promise(async res => {
     const origExt = path.extname(file)
-    const name = path.join(process.cwd(), file.replace(origExt, ext))
+    const newFileName = file.replace(origExt, ext)
+    const name = path.join(process.cwd(), newFileName)
 
     try {
       await fs.stat(name)
       res(false)
       return
-    } catch (e) {}
+    } catch (e) { }
 
     ffmpeg(file)
       .addOutput(name)
-      // .audioBitrate(192)
-      .videoBitrate(1000)
       .videoCodec(codec)
       .on('end', () => res(true))
       .run()

@@ -16,11 +16,11 @@ const convertFile = ({ file, codec, ext }) =>
       await fs.stat(name)
       res(false)
       return
-    } catch (e) {}
+    } catch (e) { }
 
     ffmpeg(file)
       .addOutput(name)
-      .audioBitrate(192)
+      //.audioBitrate(192)
       .audioCodec(codec)
       .on('end', () => res(true))
       .run()
@@ -28,8 +28,7 @@ const convertFile = ({ file, codec, ext }) =>
 
 export const audio = async ({ file, silent }) => {
   const status = await Promise.all([
-    convertFile({ file, codec: 'aac', ext: '.m4a' }),
-    convertFile({ file, codec: 'libvorbis', ext: '.ogg' }),
+    convertFile({ file, codec: 'aac', ext: '.mp4' }),
     convertFile({ file, codec: 'libmp3lame', ext: '.mp3' }),
   ])
 

@@ -12,7 +12,7 @@
     "build": "src/bin.mjs --dir docs",
     "rebuild": "npm run cleanup && src/bin.mjs --dir docs",
     "format": "f -w",
-    "cleanup": "rm -f docs/*.webp docs/*.gz docs/*.ogg docs/*.m4a docs/*.mp3",
+    "cleanup": "rm -f docs/*.webp docs/*.webm docs/*.gz docs/*.ogg docs/sample1.mp4 docs/*.mp3",
     "test": "t"
   },
   "private": true,

@@ -14,27 +14,21 @@ const handleFiles = args => {
 
   return async file => {
     try {
-      const stat = await fs.stat(file)
+      if (is.undefined(noOptimizeImages) && isImage(file)) {
+        await optimizeImage({ ...args, file })
+      }
 
-      if (stat.isDirectory(file)) {
-        await handleEntryPoints(args)(file)
-      } else if (stat.isFile(file)) {
-        if (is.undefined(noOptimizeImages) && isImage(file)) {
-          await optimizeImage({ ...args, file })
-        }
+      if (is.undefined(noAudio) && isLossLess(file)) {
+        await audio({ ...args, file })
+      }
 
-        if (is.undefined(noAudio) && isLossLess(file)) {
-          await audio({ ...args, file })
-        }
+      if (is.undefined(noVideo) && isVideoSource(file)) {
+        await video({ ...args, file })
+      }
 
-        if (is.undefined(noVideo) && isVideoSource(file)) {
-          await video({ ...args, file })
-        }
-
-        // '' is set if --no-compress is passed, otherwise noCompress
-        if (is.undefined(noCompress) && isCompressible(file)) {
-          await compress({ ...args, file })
-        }
+      // '' is set if --no-compress is passed, otherwise noCompress
+      if (is.undefined(noCompress) && isCompressible(file)) {
+        await compress({ ...args, file })
       }
     } catch (e) {
       log.error(e, 'error processing file', file)
@@ -45,13 +39,14 @@ const handleFiles = args => {
 export const handleEntryPoints = args => async dir => {
   const fileHandler = handleFiles(args)
 
-  const files = await fs.getFiles(dir, 1)
+  const files = await fs.getFiles(dir, false)
   await Promise.all(files.map(fileHandler))
 
-  const dirs = await fs.getDirectories(dir, 1)
+  let dirs = await fs.getDirectories(dir, 1)
 
-  const cleanedDirs = dirs.filter(d => d !== dir)
-  await Promise.all(cleanedDirs.map(fileHandler))
+  dirs = dirs.filter(d => d !== dir)
+  const entryPointHandler = handleEntryPoints(args)
+  await Promise.all(dirs.map(entryPointHandler))
 }
 
 export const run = async args => {

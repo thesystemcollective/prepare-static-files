@@ -5,6 +5,9 @@
   "bin": {
     "prepare-static-files": "src/bin.mjs"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "dev": "grundstein-server --dir ./docs --port 8002 --cors '*'",
     "optimize": "src/bin.mjs --dir docs --no-compress",

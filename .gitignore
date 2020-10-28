@@ -6,6 +6,5 @@ docs/**/*.m4a
 docs/**/*.ogg
 docs/**/*.gz
 docs/**/*.mp3
-docs/**/m4v.mp4
 docs/**/*.webm
 

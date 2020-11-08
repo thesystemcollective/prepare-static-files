@@ -23,7 +23,7 @@ const convertFile = ({ file, codec, ext }) =>
       await fs.stat(name)
       res(false)
       return
-    } catch (e) { }
+    } catch (e) {}
 
     ffmpeg(file)
       .addOutput(name)

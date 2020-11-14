@@ -7,6 +7,8 @@ export const getExtension = file => {
   return ext
 }
 
+export const isGltf = file => file.endsWith('.gltf')
+
 export const isImage = file => ['.png', '.jpg', '.jpeg', '.webp'].some(ext => file.endsWith(ext))
 
 export const isVideo = file => ['.mp4', '.webm'].some(t => file.endsWith(t))

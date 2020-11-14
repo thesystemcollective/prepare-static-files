@@ -23,9 +23,9 @@ export const compress = async ({ file, silent, compressMinPercent = 0.1 }) => {
   const requiredSizeReduction = input.length * compressPercent
 
   const difference = input.length - zipped.length
-  const kbMinimium = 512000
+  const kbMinimum = 512000
 
-  if (difference > requiredSizeReduction && difference < kbMinimium) {
+  if (difference > requiredSizeReduction || difference > kbMinimum) {
     await fs.writeFile(outputName, zipped)
 
     if (!silent) {
@@ -35,13 +35,10 @@ export const compress = async ({ file, silent, compressMinPercent = 0.1 }) => {
     if (!silent) {
       log.warn('ZIP', `less than 10% and less than 512kb smaller. ignoring`, file)
 
+      // delete file, if it exists
       try {
-        const stat = await fs.stat(outputName)
-        const difference = input.length - stat.size
-        if (difference < requiredSizeReduction) {
-          await fs.rmrf(outputName)
-        }
-      } catch (e) {}
+        await fs.rmrf(outputName)
+      } catch (e) { }
     }
   }
 }

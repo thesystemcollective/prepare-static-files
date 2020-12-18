@@ -30,19 +30,19 @@
   },
   "homepage": "https://github.com/grundstein/prepare-static-files#readme",
   "dependencies": {
-    "@magic/cli": "0.0.29",
+    "@magic/cli": "0.0.30",
     "@magic/fs": "0.0.9",
     "@magic/log": "0.1.7",
     "@magic/mime-types": "0.0.5",
     "@magic/types": "0.1.13",
     "fluent-ffmpeg": "2.1.2",
     "node-zopfli-es": "1.0.7",
-    "sharp": "0.26.2"
+    "sharp": "0.26.3"
   },
   "devDependencies": {
     "@grundstein/gss": "github:grundstein/gss",
-    "@magic/format": "0.0.18",
-    "@magic/test": "0.1.57"
+    "@magic/format": "0.0.20",
+    "@magic/test": "0.1.58"
   },
   "contributors": [
     {

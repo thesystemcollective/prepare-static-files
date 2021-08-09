@@ -38,7 +38,7 @@ export const compress = async ({ file, silent, compressMinPercent = 0.1 }) => {
       // delete file, if it exists
       try {
         await fs.rmrf(outputName)
-      } catch (e) { }
+      } catch (e) {}
     }
   }
 }

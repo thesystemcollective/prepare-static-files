@@ -8,6 +8,7 @@ import { optimizeImage } from '../src/optimizeImage.mjs'
 import { compress } from '../src/compress.mjs'
 import { audio } from './audio.mjs'
 import { video } from './video.mjs'
+import { etags } from './etags.mjs'
 
 const handleFiles = args => {
   const { noOptimizeImages, noAudio, noCompress, noVideo } = args
@@ -50,12 +51,16 @@ export const handleEntryPoints = args => async dir => {
 }
 
 export const run = async args => {
-  const { dirs } = args
+  const { dirs, noEtags } = args
 
   log.info('prepare-static-files started')
 
   const handleEntries = handleEntryPoints(args)
   await Promise.all(dirs.map(handleEntries))
+
+  if (!noEtags) {
+    await etags(dirs)
+  }
 
   log.success('prepare-static-files done')
 }

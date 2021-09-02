@@ -51,7 +51,12 @@ export const handleEntryPoints = args => async dir => {
 }
 
 export const run = async args => {
-  const { dirs, noEtags } = args
+  const { noEtags } = args
+  let { dirs } = args
+
+  if (!is.array(dirs)) {
+    dirs = [dirs]
+  }
 
   log.info('prepare-static-files started')
 

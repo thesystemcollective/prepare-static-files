@@ -10,6 +10,7 @@ const cliArgs = {
     ['--no-compress', '--no-zip'],
     '--no-audio',
     '--no-video',
+    '--no-etags',
     ['--silent', '--quiet', '-q'],
     '--no-webp',
     ['--compress-min-percent', '--min-percent'],
@@ -20,6 +21,7 @@ const cliArgs = {
     '--no-webp',
     '--no-audio',
     '--no-video',
+    '--no-etags',
     '--compress-min-percent',
   ],
   default: {
@@ -36,6 +38,7 @@ const cliArgs = {
       '--no-webp': 'do not generate webp files',
       '--no-audio': 'do not generate aac and ogg files from mp3s',
       '--no-video': 'do not generate mp4 and webm videos from source files',
+      '--no-etags': 'do not generate public/etags.csv',
       '--silent': 'do not output info logs',
       '--compress-min-percent':
         'which size reduction percentage is needed for compressed files to be saved.',

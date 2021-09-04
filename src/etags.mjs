@@ -28,4 +28,3 @@ export const etags = async dirs =>
       await fs.writeFile(outFile, csv)
     }),
   )
-

@@ -1,16 +1,20 @@
-## thesystemcollective/prepare-static-files
+## @grundstein/prepare-static-files
 
-this is a cli tool that prepares directories of static files for hosting.
+this is a cli tool that prepares directories of static files for hosting by optimizing them
+using sharp, zopfli and ffmpeg.
+
+it also generates alternative file formats for browser compatibility.
 
 ### converts:
-* jpg and png to webp
-* non audio, non image and non video files get gzipped
-* flac to m4a, mp3 and ogg.
+* image files automatically get duplicated as webp.
+* non audio, non image and non video files get zopfli gzipped, if their size is more than 10% smaller or the savings are bigger than 512kb.
+  in our tests on older phones, those levels where the sweetspot compromise between decompression and download time.
+* convert flac to mp4, mp3 and ogg. add missing file formats if one of those (mp4, mp3, ogg) exists, but no other versions.
 
 #### install
 
 ```bash
-npm i --save-dev thesystemcollective/prepare-static-files
+npm i --save-dev @grundstein/prepare-static-files
 ```
 
 now, node_modules/.bin/prepare-static-files exists.

@@ -5,6 +5,7 @@
   "bin": {
     "prepare-static-files": "src/bin.mjs"
   },
+  "main": "src/index.mjs",
   "files": [
     "src"
   ],

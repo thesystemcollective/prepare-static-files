@@ -13,7 +13,7 @@ export const isImage = file => ['.png', '.jpg', '.jpeg', '.webp'].some(ext => fi
 
 export const isVideo = file => ['.mp4', '.webm'].some(t => file.endsWith(t))
 
-export const isAudio = file => ['.mp3', '.m4a', 'ogg', 'mp4'].some(t => file.endsWith(t))
+export const isAudio = file => ['.mp3', '.m4a', '.ogg', '.mp4'].some(t => file.endsWith(t))
 
 export const isLossLess = file => ['.flac', '.wav', '.alac'].some(t => file.endsWith(t))
 

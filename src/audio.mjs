@@ -12,11 +12,11 @@ const convertFile = ({ file, codec, ext }) =>
     const origExt = path.extname(file)
     const name = path.join(process.cwd(), file.replace(origExt, ext))
 
-    try {
-      await fs.stat(name)
+    const exists = await fs.exists(name)
+
+    if (exists) {
       res(false)
-      return
-    } catch (e) {}
+    }
 
     ffmpeg(file)
       .addOutput(name)

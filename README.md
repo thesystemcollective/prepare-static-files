@@ -37,3 +37,20 @@ if installed locally, in your repository:
 ```
 node_modules.bin/prepare-static-files --help
 ```
+
+
+#### api
+
+prepare-static-files also exposes a javascript api
+
+```javascript
+
+import prepareStaticFiles from '@grundstein/prepare-static-files'
+
+const buildFunction = async () => {
+  await prepareStaticFiles({ dirs: 'public' })
+}
+
+buildFunction()
+
+```

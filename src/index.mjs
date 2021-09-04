@@ -74,6 +74,8 @@ export const run = async args => {
   }
 
   log.success('prepare-static-files done')
+
+  return true
 }
 
 export default run

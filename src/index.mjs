@@ -51,8 +51,14 @@ export const handleEntryPoints = args => async dir => {
 }
 
 export const run = async args => {
-  const { noEtags } = args
+  const { noEtags = false } = args
   let { dirs } = args
+
+  if (is.falsy(dirs)) {
+    const err = new Error('@grundstein/prepare-static-files: args.dirs must be set.')
+    err.code = 'E_UNDEFINED_ARG_DIRS'
+    throw err
+  }
 
   if (!is.array(dirs)) {
     dirs = [dirs]
@@ -69,3 +75,5 @@ export const run = async args => {
 
   log.success('prepare-static-files done')
 }
+
+export default run

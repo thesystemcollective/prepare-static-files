@@ -19,7 +19,6 @@
     "cleanup": "rm -f docs/*.webp docs/*.webm docs/*.gz docs/*.ogg docs/sample1.mp4 docs/*.mp3",
     "test": "t"
   },
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grundstein/prepare-static-files.git"

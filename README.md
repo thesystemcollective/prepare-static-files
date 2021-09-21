@@ -63,3 +63,7 @@ buildFunction()
 
 ##### v0.0.1
 first release
+
+##### v0.0.2
+* fix license name in package.json
+* update dependencies

@@ -70,3 +70,7 @@ first release
 
 ##### v0.0.3
 update dependencies
+
+##### v0.0.4
+* update dependencies
+* etags.csv entries are alphabetically sorted

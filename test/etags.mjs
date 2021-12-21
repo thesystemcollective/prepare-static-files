@@ -1,6 +1,6 @@
 import path from 'path'
 
-import { is, tryCatch } from '@magic/test'
+import { fs, is, tryCatch } from '@magic/test'
 
 import { etags } from '../src/etags.mjs'
 
@@ -11,8 +11,17 @@ export default [
   { fn: tryCatch(etags), expect: is.error, info: 'etags errors if called without arguments' },
   {
     fn: async () => {
-      const result = await etags(path.join(process.cwd(), 'test', '.etags'))
-      return result.join('\n')
+      const out = path.join(process.cwd(), 'test', '.etags')
+      const result = await etags(out)
+      const outFile = path.join(out, 'etags.csv')
+      const etagFileContents = await fs.readFile(outFile, 'utf8')
+
+      const joined = result.join('\n')
+      if (joined === etagFileContents) {
+        return joined
+      }
+
+      return `Etag file Contents do not match\n${result}, ${etagFileContents}`
     }, expect: expectedEtags, info: 'etags correctly writes etags file'
   },
 ]

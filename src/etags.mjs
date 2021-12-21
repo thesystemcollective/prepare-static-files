@@ -6,7 +6,7 @@ import fs from '@magic/fs'
 
 export const etags = async dirs => {
   if (is.string(dirs)) {
-    dirs = [ dirs ]
+    dirs = [dirs]
   }
 
   dirs = dirs.sort((a, b) => a - b)

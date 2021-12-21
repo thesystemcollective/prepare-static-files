@@ -4,7 +4,8 @@ import { fs, is, tryCatch } from '@magic/test'
 
 import { etags } from '../src/etags.mjs'
 
-const expectedEtags = 'fileOne.txt,xPk3X5g0tOfwpSjMZcBVcCv18ko=\nfileThree.txt,GB891E5L+2oHD+4RrXgLAD8DYNs=\nfileTwo.txt,HFsMPu38JTn85SXybU+Ek1y3fTw='
+const expectedEtags =
+  'fileOne.txt,xPk3X5g0tOfwpSjMZcBVcCv18ko=\nfileThree.txt,GB891E5L+2oHD+4RrXgLAD8DYNs=\nfileTwo.txt,HFsMPu38JTn85SXybU+Ek1y3fTw='
 
 export default [
   { fn: () => etags, expect: is.fn, info: 'etags exports a function' },
@@ -22,6 +23,8 @@ export default [
       }
 
       return `Etag file Contents do not match\n${result}, ${etagFileContents}`
-    }, expect: expectedEtags, info: 'etags correctly writes etags file'
+    },
+    expect: expectedEtags,
+    info: 'etags correctly writes etags file',
   },
 ]

@@ -74,3 +74,9 @@ update dependencies
 ##### v0.0.4
 * update dependencies
 * etags.csv entries are alphabetically sorted
+
+##### v0.0.5
+* update dependencies
+
+##### v0.0.6 - unreleased
+...

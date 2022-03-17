@@ -36,13 +36,13 @@
     "@magic/mime-types": "0.0.13",
     "@magic/types": "0.1.18",
     "fluent-ffmpeg": "2.1.2",
-    "node-zopfli-es": "1.0.7",
-    "sharp": "0.29.3"
+    "node-zopfli-es": "2.0.0",
+    "sharp": "0.30.3"
   },
   "devDependencies": {
     "@grundstein/gss": "github:grundstein/gss",
-    "@magic/format": "0.0.37",
-    "@magic/test": "0.2.5"
+    "@magic/format": "0.0.38",
+    "@magic/test": "0.2.7"
   },
   "contributors": [
     {

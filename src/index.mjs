@@ -29,7 +29,7 @@ const handleFiles = args => {
       }
 
       if (is.undefined(noPly) && isPly(file)) {
-        await ply({...args, file })
+        await ply({ ...args, file })
       }
 
       if (is.undefined(noCompress) && isCompressible(file)) {

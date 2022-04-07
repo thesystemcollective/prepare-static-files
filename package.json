@@ -1,6 +1,6 @@
 {
   "name": "@grundstein/prepare-static-files",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "optimize and compress static files for hosting.",
   "bin": {
     "prepare-static-files": "src/bin.mjs"

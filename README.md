@@ -81,5 +81,9 @@ update dependencies
 ##### v0.0.6
 * update dependencies
 
-##### v0.0.7 - unreleased
+##### v0.0.7
+* update dependencies
+* add ply optimization code
+
+##### v0.0.8 - unreleased
 ...

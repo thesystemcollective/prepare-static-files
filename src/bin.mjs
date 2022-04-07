@@ -22,6 +22,7 @@ const cliArgs = {
     '--no-audio',
     '--no-video',
     '--no-etags',
+    '--no-ply',
     '--compress-min-percent',
   ],
   default: {
@@ -39,6 +40,7 @@ const cliArgs = {
       '--no-audio': 'do not generate aac and ogg files from mp3s',
       '--no-video': 'do not generate mp4 and webm videos from source files',
       '--no-etags': 'do not generate public/etags.csv',
+      '--no-ply': 'do not optimize ply files',
       '--silent': 'do not output info logs',
       '--compress-min-percent':
         'which size reduction percentage is needed for compressed files to be saved.',

@@ -85,5 +85,8 @@ update dependencies
 * update dependencies
 * add ply optimization code
 
-##### v0.0.8 - unreleased
+##### v0.0.8
+* FIX: ply handled the arguments wrongly
+
+##### v0.0.9 - unreleased
 ...

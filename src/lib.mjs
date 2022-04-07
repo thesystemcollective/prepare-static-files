@@ -22,3 +22,5 @@ export const isVideoSource = file => ['.mov', '.m4v'].some(t => file.endsWith(t)
 export const isZip = file => file.endsWith('.gz')
 
 export const isCompressible = file => compressibles[getExtension(file)]
+
+export const isPly = file => file.endsWith('.ply')

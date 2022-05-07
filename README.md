@@ -88,5 +88,9 @@ update dependencies
 ##### v0.0.8
 * FIX: ply handled the arguments wrongly
 
-##### v0.0.9 - unreleased
+##### v0.0.9
+* update dependencies
+* update @magic/mime-types to allow ply files to get compressed
+
+##### v0.0.10 - unreleased
 ...

@@ -39,7 +39,7 @@ prepare-static-files --help
 
 if installed locally, in your repository:
 ```
-node_modules.bin/prepare-static-files --help
+node_modules/.bin/prepare-static-files --help
 ```
 
 

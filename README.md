@@ -92,5 +92,8 @@ update dependencies
 * update dependencies
 * update @magic/mime-types to allow ply files to get compressed
 
-##### v0.0.10 - unreleased
+##### v0.0.10
+update dependencies
+
+##### v0.0.11 - unreleased
 ...

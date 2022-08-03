@@ -95,5 +95,9 @@ update dependencies
 ##### v0.0.10
 update dependencies
 
-##### v0.0.11 - unreleased
+##### v0.0.11
+* add --no-ply
+* add --force to overwrite existing files
+
+##### v0.0.12 - unreleased
 ...

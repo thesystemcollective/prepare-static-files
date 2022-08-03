@@ -3,8 +3,13 @@ import fs from '@magic/fs'
 
 import zopfli from 'node-zopfli-es'
 
-export const compress = async ({ file, silent, compressMinPercent = 0.1 }) => {
+export const compress = async ({ file, force, silent, compressMinPercent = 0.1 }) => {
   const outputName = `${file}.gz`
+
+  const zipExists = await fs.exists(outputName)
+  if (zipExists && !force) {
+    return
+  }
 
   const input = await fs.readFile(file)
 

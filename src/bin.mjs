@@ -13,6 +13,7 @@ const cliArgs = {
     '--no-etags',
     ['--silent', '--quiet', '-q'],
     '--no-webp',
+    '--no-ply',
     ['--compress-min-percent', '--min-percent'],
   ],
   single: [

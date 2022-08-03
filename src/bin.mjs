@@ -14,6 +14,7 @@ const cliArgs = {
     ['--silent', '--quiet', '-q'],
     '--no-webp',
     '--no-ply',
+    ['--force', '-f'],
     ['--compress-min-percent', '--min-percent'],
   ],
   single: [
@@ -24,11 +25,13 @@ const cliArgs = {
     '--no-video',
     '--no-etags',
     '--no-ply',
+    '--force',
     '--compress-min-percent',
   ],
   default: {
     '--dirs': ['docs'],
     '--compress-min-percent': 0.2,
+    '--force': false,
   },
   help: {
     name: 'thesystem - prepare-static-files',
@@ -43,6 +46,7 @@ const cliArgs = {
       '--no-etags': 'do not generate public/etags.csv',
       '--no-ply': 'do not optimize ply files',
       '--silent': 'do not output info logs',
+      '--force': 'regenerate files that exist.',
       '--compress-min-percent':
         'which size reduction percentage is needed for compressed files to be saved.',
     },

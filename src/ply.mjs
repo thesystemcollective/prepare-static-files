@@ -1,5 +1,3 @@
-import path from 'path'
-
 import fs from '@magic/fs'
 
 export const ply = async ({ file }) => {
@@ -18,7 +16,7 @@ export const ply = async ({ file }) => {
         return parseFloat(r).toFixed(3) / 1.0
       })
 
-      return r.join(' ')
+      return r.join(' ').trim()
     })
     .filter(a => a)
 

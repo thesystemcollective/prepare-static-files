@@ -12,7 +12,7 @@ const jpegOptions = {
   optimizeCoding: true,
 }
 
-export const optimizeImage = async ({ file, silent, noWebp }) => {
+export const optimizeImage = async ({ file, force, silent, noWebp }) => {
   const sharpen = await sharp(file)
 
   const originalBuffer = await sharpen.toBuffer()
@@ -20,8 +20,9 @@ export const optimizeImage = async ({ file, silent, noWebp }) => {
   if (is.undefined(noWebp)) {
     const extension = path.extname(file)
     const webpName = file.replace(extension, '.webp')
+
     const webpExists = await fs.exists(webpName)
-    if (!webpExists) {
+    if (!webpExists || force) {
       if (!silent) {
         log.info('generate webp', webpName)
       }

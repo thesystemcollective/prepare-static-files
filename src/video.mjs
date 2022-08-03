@@ -13,17 +13,19 @@ import ffmpeg from 'fluent-ffmpeg'
 
 // ffmpeg -i input -c:v libx264 -preset slow -crf 22 -x264-params keyint=123:min-keyint=20 -c:a copy output.mkv
 
-const convertFile = ({ file, codec, ext }) =>
+const convertFile = ({ file, force, codec, ext }) =>
   new Promise(async res => {
     const origExt = path.extname(file)
     const newFileName = file.replace(origExt, ext)
     const name = path.join(process.cwd(), newFileName)
 
-    try {
-      await fs.stat(name)
-      res(false)
-      return
-    } catch (e) {}
+    if (!force) {
+      try {
+        await fs.stat(name)
+        res(false)
+        return
+      } catch (e) {}
+    }
 
     ffmpeg(file)
       .addOutput(name)
@@ -32,9 +34,9 @@ const convertFile = ({ file, codec, ext }) =>
       .run()
   })
 
-export const video = async ({ file, silent }) => {
-  const mp4 = await convertFile({ file, codec: 'libx264', ext: '.mp4' })
-  const webm = await convertFile({ file, codec: 'libvpx', ext: '.webm' })
+export const video = async ({ file, force, silent }) => {
+  const mp4 = await convertFile({ file, force, codec: 'libx264', ext: '.mp4' })
+  const webm = await convertFile({ file, force, codec: 'libvpx', ext: '.webm' })
 
   if ((mp4 || webm) && !silent) {
     log.info('wrote converted video files for:', file)

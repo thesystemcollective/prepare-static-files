@@ -68,7 +68,7 @@ export const run = async args => {
     dirs = [dirs]
   }
 
-  log.info('prepare-static-files started')
+  log.info('prepare-static-files started in', dirs)
 
   const handleEntries = handleEntryPoints(args)
   await Promise.all(dirs.map(handleEntries))

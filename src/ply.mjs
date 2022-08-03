@@ -9,7 +9,7 @@ export const ply = async ({ file }) => {
     .split('\n')
     .map(line => {
       const r = line.split(' ').map(r => {
-        if (!r) {
+        if (!r && r !== '0') {
           return
         }
 

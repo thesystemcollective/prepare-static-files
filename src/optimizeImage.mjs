@@ -13,6 +13,8 @@ const jpegOptions = {
 }
 
 export const optimizeImage = async ({ file, force, silent, noWebp }) => {
+  log.info('Sharp optimize file', file)
+
   const sharpen = await sharp(file)
 
   const originalBuffer = await sharpen.toBuffer()
@@ -46,6 +48,9 @@ export const optimizeImage = async ({ file, force, silent, noWebp }) => {
 
   // make sure we do not write a file bigger than before
   if (buffer.length >= originalBuffer.length) {
+    if (!silent) {
+      log.info('Compressed file bigger than original, aborting', file)
+    }
     return
   }
 

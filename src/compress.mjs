@@ -30,6 +30,8 @@ export const compress = async ({ file, force, silent, compressMinPercent = 0.1 }
   const difference = input.length - zipped.length
   const kbMinimum = 512000
 
+  log.info('Checking', file, 'for compression')
+
   if (difference > requiredSizeReduction || difference > kbMinimum) {
     await fs.writeFile(outputName, zipped)
 

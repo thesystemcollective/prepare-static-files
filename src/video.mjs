@@ -13,8 +13,8 @@ import ffmpeg from 'fluent-ffmpeg'
 
 // ffmpeg -i input -c:v libx264 -preset slow -crf 22 -x264-params keyint=123:min-keyint=20 -c:a copy output.mkv
 
-const convertFile = ({ file, force, codec, ext }) =>
-  new Promise(async res => {
+const convertFile = ({ file, force, silent, codec, ext }) =>
+  new Promise(async resolve => {
     const origExt = path.extname(file)
     const newFileName = file.replace(origExt, ext)
     const name = path.join(process.cwd(), newFileName)
@@ -22,15 +22,19 @@ const convertFile = ({ file, force, codec, ext }) =>
     if (!force) {
       try {
         await fs.stat(name)
-        res(false)
+        resolve(false)
         return
       } catch (e) {}
+    }
+
+    if (!silent) {
+      log.info('Converting', file)
     }
 
     ffmpeg(file)
       .addOutput(name)
       .videoCodec(codec)
-      .on('end', () => res(true))
+      .on('end', () => resolve(true))
       .run()
   })
 

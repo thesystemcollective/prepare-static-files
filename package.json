@@ -37,11 +37,11 @@
     "@magic/types": "0.1.23",
     "fluent-ffmpeg": "2.1.2",
     "node-zopfli-es": "2.0.2",
-    "plyo": "github:grundstein/plyo",
+    "plyo": "0.0.1",
     "sharp": "0.32.1"
   },
   "devDependencies": {
-    "@grundstein/gss": "github:grundstein/gss",
+    "@grundstein/gss": "0.0.14",
     "@magic/format": "0.0.51",
     "@magic/test": "0.2.17"
   },

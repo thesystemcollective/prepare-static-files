@@ -49,7 +49,7 @@ export const optimizeImage = async ({ file, force, silent, noWebp }) => {
   // make sure we do not write a file bigger than before
   if (buffer.length >= originalBuffer.length) {
     if (!silent) {
-      log.info('Compressed file bigger than original, aborting', file)
+      log.info('Compressed file bigger than original, ignoring:', file)
     }
     return
   }

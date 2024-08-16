@@ -111,6 +111,10 @@ update dependencies
 - add --no-ply
 - add --force to overwrite existing files
 
-##### v0.0.12 - unreleased
+##### v0.0.12
+
+- update dependencies
+
+##### v0.0.13 - unreleased
 
 ...
